@@ -3,11 +3,11 @@ module.exports = function (sequelize, DataTypes) {
   var Participants = sequelize.define("Participants", {
     eventKey: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      //allowNull: false
     },
     userKey: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      //allowNull: false
     }
   }, {
     freezeTableName: true
@@ -15,17 +15,13 @@ module.exports = function (sequelize, DataTypes) {
 
   //this is supposed to associate the users in an event with a corresponding event
   Participants.associate = function (models) {
-  //   Participants.belongsTo(models.Users, {
-  //     foreignKey: {
-  //       allowNull: false
-  //     }
-  //   });
-  //   Participants.belongsTo(models.Events, {
-  //     foreignKey: {
-  //       allowNull: false
-  //     }
-  //   });
-   };
+    models.Participants.belongsToMany(models.Events,
+      {
+        through: {
+          model: models.Switzerland
+        }
+    });
+   }
 
   return Participants;
 }; //module exports
