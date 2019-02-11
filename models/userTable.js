@@ -27,7 +27,7 @@ var Users = sequelize.define("Users", {
 //associates the user with an event
 //if the user is deleted they will also be deleted from events
 Users.associate = function(models) {
-  Users.hasMany(models.Event, {
+  Users.hasMany(models.Events, {
     onDelete: "cascade"
   });
 };
