@@ -15,7 +15,7 @@ module.exports = function (sequelize, DataTypes) {
 
   //this is supposed to associate the users in an event with a corresponding event
   Participants.associate = function (models) {
-    models.Users.belongToMany(models.Posts,
+    models.Participants.belongsToMany(models.Events,
       {
         through: {
           model: models.Switzerland
