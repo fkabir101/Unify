@@ -1,8 +1,21 @@
 $("#submit").on("click", function(event){
   event.preventDefault();
-  const name = $('#eventName').val().trim();
-  const location = $('#category').val().trim();
-  console.log("Hi");
-  console.log(name);
-  console.log(location);
+
+  const newEvent ={
+    eventName : $('#eventName').val().trim(),
+    eventLocation : $('#location').val().trim(),
+    eventDescription : $('#description').val().trim(),
+    eventTime : $('#date').val().trim(),
+    maxLimit : $('#limit').val().trim(),
+    category : $('#category').val().trim(),
+    currentParticipants : 0
+  }
+
+  $.ajax({
+    url: "/api/create",
+    method: "POST",
+    data: newEvent
+  }).then(function(data){
+    console.log(data);
+  })
 });
