@@ -1,16 +1,5 @@
 //this creates the table for events
 module.exports = function(sequelize, DataTypes) {
-<<<<<<< HEAD
-var User = sequelize.define("events", {
-  eventId: Sequelize.INTEGER,
-  creatorId: Sequelize.INTEGER,
-  eventName: Sequelize.STRING,
-  eventLocation: Sequelize.STRING,
-  eventTime: Sequelize.STRING,
-  maxLimit: Sequelize.INTEGER,
-  category: Sequelize.STRING,
-  currentParticipants: Sequelize.INTEGER
-=======
 var Events = sequelize.define("Events", {
   creatorId: {
     type: DataTypes.INTEGER,
@@ -52,15 +41,10 @@ var Events = sequelize.define("Events", {
     allowNull: false,
     validate: {len: [1]}
   }
->>>>>>> d982bb5022df08a86ca93849af9fb5a335c5a6d0
 }, {
   freezeTableName: true
 });
 
-<<<<<<< HEAD
-return User;
-}
-=======
 //associates the creation of an event with a user
 Events.associate = function(models) {
   Events.belongsTo(models.Users, {
@@ -72,4 +56,3 @@ Events.associate = function(models) {
 
   return Events;
 };
->>>>>>> d982bb5022df08a86ca93849af9fb5a335c5a6d0
