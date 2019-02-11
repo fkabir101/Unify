@@ -3,37 +3,37 @@ module.exports = function(sequelize, DataTypes) {
 var Events = sequelize.define("Events", {
   eventName: {
     type: DataTypes.STRING,
-    allowNull: false,
+   // allowNull: false,
     validate: {len: [1]}
   },
   eventDescription: {
     type: DataTypes.TEXT,
-    allowNull: false,
+   // allowNull: false,
     validate: {len: [1, 500]}
   },
   eventLocation: {
     type: DataTypes.STRING,
-    allowNull: false,
+   // allowNull: false,
     validate: {len: [1]}
   },
   eventTime: {
     type: DataTypes.STRING,
-    allowNull: false,
+  //  allowNull: false,
     validate: {len: [1]}
   },
   maxLimit: {
     type: DataTypes.INTEGER,
-    allowNull: false,
+   // allowNull: false,
     validate: {len: [1]}
   },
   category: {
     type: DataTypes.STRING,
-    allowNull: false,
+  //  allowNull: false,
     validate: {len: [1]}
   },
   currentParticipants: {
     type: DataTypes.INTEGER,
-    allowNull: false,
+   // allowNull: false,
     validate: {len: [1]}
   }
 }, {
@@ -45,11 +45,16 @@ Events.associate = function(models) {
   models.Events.belongsTo(models.Users, {
     onDelete: "CASCADE",
     foreignKey: {
-      allowNull: false
+      //allowNull: false
     }
   });
- // models.Events.belongToMany()
   
+  models.Events.belongsToMany(models.Participants,
+    {
+      through: {
+        model: models.switzerland
+      }
+    });
 };
 
   return Events;
