@@ -52,7 +52,7 @@ Events.associate = function(models) {
   models.Events.belongsToMany(models.Participants,
     {
       through: {
-        model: models.switzerland
+        model: models.Switzerland
       }
     });
 };
