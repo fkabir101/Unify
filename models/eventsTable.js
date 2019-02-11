@@ -3,7 +3,7 @@ module.exports = function(sequelize, DataTypes) {
 var Events = sequelize.define("Events", {
   creatorId: {
     type: DataTypes.INTEGER,
-    allowNull: false,
+    //allowNull: false,
     validate: {len: [1]}
   },
   eventName: {
@@ -49,7 +49,7 @@ var Events = sequelize.define("Events", {
 Events.associate = function(models) {
   Events.belongsTo(models.Users, {
     foreignKey: {
-      allowNull: false
+      //allowNull: false
     }
   });
 };

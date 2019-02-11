@@ -3,11 +3,11 @@ module.exports = function (sequelize, DataTypes) {
   var Participants = sequelize.define("Participants", {
     eventKey: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      //allowNull: false
     },
     userKey: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      //allowNull: false
     }
   }, {
     freezeTableName: true
