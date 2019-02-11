@@ -16,6 +16,8 @@ $("#submit").on("click", function(event){
     method: "POST",
     data: newEvent
   }).then(function(data){
-    console.log(data);
+    if(data.success){
+      window.location.replace("/");
+    }
   })
 });
