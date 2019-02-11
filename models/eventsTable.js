@@ -1,5 +1,5 @@
 //this creates the table for events
-module.exports = function(sequelize, DataTypes) {
+module.exports = function(sequalize, DataTypes) {
 var Events = sequalize.define("Events", {
   creatorId: {
     type: DataTypes.INTEGER,
