@@ -1,10 +1,36 @@
 //this creates the table for users
-var User = sequalize.define("users", {
-  userId: Sequelize.INTEGER,
-  userName: Sequalize.STRING,
-  passowrd: Sequalize.STRING,
-  isOrganizer: Sequalize.BOOLEAN,
-  email: Sequalize.STRING
+module.exports = function(sequelize, DataTypes) {
+var Users = sequelize.define("Users", {
+  userName: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    validate: {len: [1]}
+  },
+  password: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    validate: {len: [1]}
+  },
+  isOrganizer: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+    validate: {len: [1]}
+  },
+  email: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    validate: {len: [1]}
+  }
 }, {
   freezeTableName: true
 });
+//associates the user with an event
+//if the user is deleted they will also be deleted from events
+Users.associate = function(models) {
+  Users.hasMany(models.Event, {
+    onDelete: "cascade"
+  });
+};
+
+return Users;
+};
