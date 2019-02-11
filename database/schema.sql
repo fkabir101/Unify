@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS unify_db;
+CREATE DATABASE unify_db;
