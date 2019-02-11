@@ -17,5 +17,8 @@ router.route("/signup").get(function(req, res) {
 router.route("/events").get(function(req, res) {
   res.sendFile(path.join(__dirname, "../public/events.html"));
 });
+router.route("/signup").get(function(req, res) {
+  res.sendFile(path.join(__dirname, "../public/signup.html"));
+});
 
 module.exports = router;
