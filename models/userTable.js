@@ -18,8 +18,9 @@ var Users = sequelize.define("Users", {
   },
   email: {
     type: DataTypes.STRING,
-    //allowNull: false,
-    validate: {len: [1]}
+    allowNull: false,
+    unique: true,
+    validate: {isEmail: true}
   }
 }, {
   freezeTableName: true
@@ -27,9 +28,7 @@ var Users = sequelize.define("Users", {
 //associates the user with an event
 //if the user is deleted they will also be deleted from events
 Users.associate = function(models) {
-  Users.hasMany(models.Events, {
-    onDelete: "cascade"
-  });
+  Users.hasMany(models.Events);
 };
 
 return Users;

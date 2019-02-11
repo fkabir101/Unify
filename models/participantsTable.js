@@ -15,17 +15,13 @@ module.exports = function (sequelize, DataTypes) {
 
   //this is supposed to associate the users in an event with a corresponding event
   Participants.associate = function (models) {
-  //   Participants.belongsTo(models.Users, {
-  //     foreignKey: {
-  //       allowNull: false
-  //     }
-  //   });
-  //   Participants.belongsTo(models.Events, {
-  //     foreignKey: {
-  //       allowNull: false
-  //     }
-  //   });
-   };
+    models.Users.belongToMany(models.Posts,
+      {
+        through: {
+          model: models.Switzerland
+        }
+    });
+   }
 
   return Participants;
 }; //module exports
