@@ -1,6 +1,6 @@
 //this creates the table for events
 module.exports = function(sequelize, DataTypes) {
-var Events = sequalize.define("Events", {
+var Events = sequelize.define("Events", {
   creatorId: {
     type: DataTypes.INTEGER,
     allowNull: false,
