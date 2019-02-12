@@ -5,3 +5,19 @@ const apiRoutes = require("./createRoutes");
 router.use("/", apiRoutes);
 
 module.exports = router;
+
+app.post('/', function(req, res){
+  var username = req.body.username;
+  var password = req.body.password;
+  authenticate(req, username, password);
+  if (req.session && req.session.authenticated) {
+  res.reder('welcome', {users: data2.users});
+  } else {
+  res.redirect('/');
+  }
+  })
+  
+  app.listen(3000,function(){
+  console.log('Started express application!')
+  });
+  
