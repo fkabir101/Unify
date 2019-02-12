@@ -1,10 +1,12 @@
 const router = require("express").Router();
 //sconst apiRoutes = require("./apiRoutes");
 const apiRoutes = require("./createRoutes");
-
+db = require("../../models");
 router.use("/", apiRoutes);
 
 module.exports = router;
+
+module.exports = function(app) {
 
 app.post('/', function(req, res){
   var username = req.body.username;
@@ -20,4 +22,4 @@ app.post('/', function(req, res){
   app.listen(3000,function(){
   console.log('Started express application!')
   });
-  
+}
