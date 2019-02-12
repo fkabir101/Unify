@@ -5,7 +5,7 @@ router.route("/").get(function(req, res) {
   res.sendFile(path.join(__dirname, "../../public/login.html"));
 });
 
-router.route("/login").get(function(req, res) {
+router.route("/index").get(function(req, res) {
   res.sendFile(path.join(__dirname, "../../public/index.html"));
 });
 router.route("/create").get(function(req, res) {
@@ -17,5 +17,6 @@ router.route("/signup").get(function(req, res) {
 router.route("/events").get(function(req, res) {
   res.sendFile(path.join(__dirname, "../../public/events.html"));
 });
+
 
 module.exports = router;

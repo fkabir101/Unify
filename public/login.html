@@ -1,31 +1,47 @@
-<link href='https://fonts.googleapis.com/css?family=Ubuntu:500' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" type="text/css" href="theme.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
 
+  <link href='https://fonts.googleapis.com/css?family=Ubuntu:500' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="./css/styleLogin.css">
+  <title>Unify Login</title>
+</head>
+<body>
+  
 
-
-
-<div class="login">
-  <div class="login-header">
-    <h1>Login</h1>
+  
+  <div class="login">
+    <div class="login-header">
+      <h1>Login</h1>
+    </div>
+    <div class="login-form">
+      <h3>Username:</h3>
+      <input type="text" placeholder="Username" id="username-input"/><br>
+      <h3>Password:</h3>
+      <input type="password" placeholder="Password" id="password-input"/>
+      <br>
+      <input type="button" value="Login" class="login-button" id="submit"/>
+      <br>
+      <a class="sign-up">Sign Up!</a>
+      <br>
+      <h6 class="no-access">Can't access your account?</h6>
+    </div>
   </div>
-  <div class="login-form">
-    <h3>Username:</h3>
-    <input type="text" placeholder="Username" id="username-input"/><br>
-    <h3>Password:</h3>
-    <input type="password" placeholder="Password" id="password-input"/>
-    <br>
-    <input type="button" value="Login" class="login-button" id="submit"/>
-    <br>
-    <a class="sign-up">Sign Up!</a>
-    <br>
-    <h6 class="no-access">Can't access your account?</h6>
+  <div class="error-page">
+    <div class="try-again">Error: Try again?</div>
   </div>
-</div>
-<div class="error-page">
-  <div class="try-again">Error: Try again?</div>
-</div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.min.js"></script>
 <script src="javascript/login.js"></script>
+</body>
+</html>
+
+
+
