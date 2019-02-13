@@ -21,8 +21,20 @@ $(document).ready(function () {
       .then((userInfo) => {
         console.log(userInfo);
         location.replace(userInfo)
+        loginUser (userInfo.username, userInfo.password);
       })
       .catch(err => console.log(err));
   });
 
 });
+
+function loginUser (username, password) {
+  $.post("/api/users/login", {
+    username: username,
+    password: password
+  }).then(function (data) {
+    window.location.replace(data);
+  }).catch(function (err) {
+    console.log(err)
+  });
+};
