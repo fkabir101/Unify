@@ -55,7 +55,7 @@ module.exports = {
     db
       .Users
       .findOne({
-        attributes: ["id", "first_name", "last_name", "full_name", "user_name"],
+        attributes: ["username", "password", "email"],
         where: {
           username: req.params.username
         },

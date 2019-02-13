@@ -17,7 +17,7 @@ router.route("/signup").get(function(req, res) {
   res.sendFile(path.join(__dirname, "../../public/signup.html"));
 });
 router.route("/events").get(function(req, res) {
-  res.sendFile(path.join(__dirname, "../../public/event.html"));
+  res.sendFile(path.join(__dirname, "../../public/events.html"));
 });
 
 
