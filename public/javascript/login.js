@@ -55,4 +55,4 @@ function loginUser (username, password) {
   }).catch(function (err) {
     console.log(err)
   });
-}
+};
