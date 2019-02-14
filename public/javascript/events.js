@@ -113,10 +113,10 @@ function getEventPage(event){
   const eventDiv = $(`<div class="p-3 border border-dark event" id="${event.id}">`);
   eventDiv
     .append(`<h1>${event.eventName}</h1>`)
-    .append(`<h3>${event.eventLocation}</h3>`) // add venue
+    .append(`<h3>Venue: ${event.eventVenue}, ${event.eventLocation}</h3>`) // add venue
     .append(`<h4>${event.eventTime}`)
     .append(`<h4>Participants: ${event.currentParticipants}/${event.maxLimit}</h4>`)
-    .append(`<p>Organizer: ${event.UserId}</p>`)
+    .append(`<p>Organizer: ${event.User.username}</p>`) // ad organizer
     .append(`<p>${event.eventDescription}</p>`);
 
   eventDiv.append(`<button type="button" class="btn btn-danger" id="join">join</button>`); // WORK ON HAVING IT ADD USERS IT THE PARTICIPANTS TABLE

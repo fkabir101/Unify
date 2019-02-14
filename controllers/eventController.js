@@ -37,8 +37,10 @@ module.exports = {
     db.Events.findOne({
       where: {
         id : req.params.id
-      }
+      },
+      include : [db.Users]
     }).then(function(dbData){
+      dbData.username = "Admin";
       res.json(dbData);
     });
   }
