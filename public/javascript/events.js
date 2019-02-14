@@ -1,3 +1,5 @@
+let eventId = null;
+
 $("#searchCategory").on("change",function(){
   searchCategory = $("#searchCategory").val().trim();
   let searchArray = [];
@@ -101,6 +103,7 @@ function generateEvents(dbData){
 
 $("#eventList").on("click", ".event", function(){
   const id = $(this).attr('id');
+  //console.log("Const id: " + id);
   $.ajax({
     url: `/api/event/goEvent/${id}`,
     method: "GET",
@@ -119,7 +122,60 @@ function getEventPage(event){
     .append(`<p>Organizer: ${event.User.username}</p>`) // ad organizer
     .append(`<p>${event.eventDescription}</p>`);
 
-  eventDiv.append(`<button type="button" class="btn btn-danger" id="join">join</button>`); // WORK ON HAVING IT ADD USERS IT THE PARTICIPANTS TABLE
+    //console.log("Event Id: " + event.id);
+
+  eventDiv.append(`<button type="button" class="btn btn-danger join" >join</button>`); // WORK ON HAVING IT ADD USERS IT THE PARTICIPANTS TABLE
 
   $("#eventList").html(eventDiv);  
 }
+
+//this function is called when the user clicks to add an event.  It calls information from the database on the event
+$("#eventList").on("click", ".join", function (event) {
+  event.preventDefault();
+  //console.log("click");
+  eventId = $(this).parent('.event').attr('id');
+ // console.log("Join id: " + eventId);
+  $.ajax({
+    url: `/api/event/goEvent/${eventId}`,
+    method: "GET",
+  }).then(function(data){
+    //const eventId = `${eventId}`;
+    check(data);
+  });
+});
+
+function check (event) {
+  var max = event.maxLimit;
+  var curr = event.currentParticipants;
+  if (max <= curr) {
+    alert("This event is already full");
+  }
+  // else if (req.user.id === undefined) {
+  //   window.location.replace("/login");
+  // }
+  else {//find out who is logged in req.user
+    
+    addParticipant(event);
+  
+  }
+}; //check
+
+function addParticipant(event) {
+  const z = {
+    eventKey : event.id
+  };
+  $.ajax({
+    url: "/api/part",
+    method: "POST",
+    data: z
+  }).then(function() {
+    updateEvents();
+  })
+};// add participant
+
+function updateEvents(){
+    $.ajax({
+      url: `/api/event/goEvent/${eventId}`,
+      method: "PUT"
+    })
+}; //update events
