@@ -9,9 +9,14 @@ var Events = sequelize.define("Events", {
   eventDescription: {
     type: DataTypes.TEXT,
    // allowNull: false,
-    validate: {len: [1, 500]}
+    validate: {len: [1]}
   },
   eventLocation: {
+    type: DataTypes.STRING,
+   // allowNull: false,
+    validate: {len: [1]}
+  },
+  eventVenue: {
     type: DataTypes.STRING,
    // allowNull: false,
     validate: {len: [1]}
