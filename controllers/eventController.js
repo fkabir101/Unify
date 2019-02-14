@@ -30,7 +30,16 @@ module.exports = {
         }
       }).then(function (dbData) {
         res.json(dbData)
-      })
+      });
     }
+  },
+  getEventPage: function(req, res){
+    db.Events.findOne({
+      where: {
+        id : req.params.id
+      }
+    }).then(function(dbData){
+      res.json(dbData);
+    });
   }
 }

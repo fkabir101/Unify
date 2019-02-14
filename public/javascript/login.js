@@ -11,29 +11,25 @@ $(document).ready(function() {
     };
 
     //console.log(userInfo);
-
+    if (!userInfo.username || !userInfo.password) {
+      return false;
+    }
+    else {
     //storing username
     sessionStorage.setItem("userName", userInfo.username);
     const userName = sessionStorage.getItem("userName");
     //console.log("username: " + userName);
+    }
 
+    //run the function and clear the form
+    loginUser (userInfo.username, userInfo.password);
+    $("#username-input").val('');
+    $("#password-input").val('');
 
-    $.ajax({
-      url: '/api/users/login',
-      method: 'POST',
-      data: userInfo
-    })
-    .then((userInfo) => {
-      location.replace(userInfo)
-    })
-    .catch(err => console.log(err));
 
   });// #submit on click
 
-  //from John's code
-  //Getting a reference to the input field where user adds a new todo
-  //var $newItemInput = $("input.new-item");
-  //Our new login wil
+ 
 
 });// document.ready function
 
@@ -49,3 +45,14 @@ $('.try-again').click(function(){
   $('.error-page').hide(0);
   $('.login').slideDown(1000);
 });
+
+function loginUser (username, password) {
+  $.post("/api/users/login", {
+    username: username,
+    password: password
+  }).then(function (data) {
+    window.location.replace(data);
+  }).catch(function (err) {
+    console.log(err)
+  });
+}
