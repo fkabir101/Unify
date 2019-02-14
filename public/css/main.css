@@ -13,7 +13,7 @@ body{
   padding: 10px;
 
   margin:auto; */
-
+  position: 10px;
   margin: 0px 0px 0px 20px;
   top: 8px;
   left: 16px;
@@ -28,14 +28,22 @@ body{
 }
 
 p {
-  width: 200px;
+ 
   margin: 0px 0px 0px 20px;
   /* align-content: center; */
 
   position: 20px 20px 20px 20px;
   left: 0;
   /* top: 50%; */
-  width: 100%;
-  text-align: center;
+
+  position: 10px;
+  font-size: 60px;
+}
+.ul1{
+  position: 10px;
+  
+  margin: 0px 0px 0px 20px;
+  top: 8px;
+  left: -15px;
   font-size: 18px;
 }
