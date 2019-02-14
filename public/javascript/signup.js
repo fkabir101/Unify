@@ -19,7 +19,7 @@ $(document).ready(function () {
       data: userInfo
     })
       .then((userInfo) => {
-        console.log(userInfo);
+        //console.log(userInfo);
         location.replace(userInfo)
         loginUser (userInfo.username, userInfo.password);
       })
