@@ -80,10 +80,9 @@ $("#search").on("click", function(event){
 
 
 function generateEvents(dbData){
-  console.log(dbData);
   const allEvents = $("<div>");
   dbData.forEach(function(event){
-    const eventDiv = $(`<div class="p-3 border border-dark">`);
+    const eventDiv = $(`<div class="p-3 border border-dark event" id="${event.id}">`);
 
     const nameDiv = $(`<div class = 'm-3 row'>`);
     nameDiv.append(`<h3>${event.eventName}: ${event.eventTime}</h3>`);
@@ -91,14 +90,36 @@ function generateEvents(dbData){
     const categoryDiv = $(`<div class = 'm-3 row'>`);
     categoryDiv.append(`<h5>Category: ${event.category}</h5>`);
 
-    const descriptionDiv = $(`<div class = 'm-3 row'>`);
-    descriptionDiv.append(`<p>${event.eventDescription}</p>`);
 
     eventDiv.append(nameDiv);
     eventDiv.append(categoryDiv);
-    eventDiv.append(descriptionDiv);
     allEvents.append(eventDiv);
   });
 
   $("#eventList").html(allEvents);
+}
+
+$("#eventList").on("click", ".event", function(){
+  const id = $(this).attr('id');
+  $.ajax({
+    url: `/api/event/goEvent/${id}`,
+    method: "GET",
+  }).then(function(data){
+    getEventPage(data);
+  });
+});
+
+function getEventPage(event){
+  const eventDiv = $(`<div class="p-3 border border-dark event" id="${event.id}">`);
+  eventDiv
+    .append(`<h1>${event.eventName}</h1>`)
+    .append(`<h3>${event.eventLocation}</h3>`) // add venue
+    .append(`<h4>${event.eventTime}`)
+    .append(`<h4>Participants: ${event.currentParticipants}/${event.maxLimit}</h4>`)
+    .append(`<p>Organizer: ${event.UserId}</p>`)
+    .append(`<p>${event.eventDescription}</p>`);
+
+  eventDiv.append(`<button type="button" class="btn btn-danger" id="join">join</button>`); // WORK ON HAVING IT ADD USERS IT THE PARTICIPANTS TABLE
+
+  $("#eventList").html(eventDiv);  
 }
