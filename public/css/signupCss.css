@@ -7,7 +7,7 @@ body{
   background:url('http://cdn.wallpapersafari.com/13/6/Mpsg2b.jpg');
   margin:0px;
   font-family: 'Ubuntu', sans-serif;
-	background-size: 100% 110%;
+	/* background-size: 100% 110%; */
 }
 .signup-header {
   color:#fff;

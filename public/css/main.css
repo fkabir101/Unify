@@ -1,0 +1,33 @@
+body{
+  background:url('http://cdn.wallpapersafari.com/13/6/Mpsg2b.jpg');
+  margin:0px;
+  font-family: 'Ubuntu', sans-serif;
+  /* background-size: 100% 110%; */
+  object-fit: cover;
+}
+
+.img-loc{
+  /* float: left;
+  width: 300px;
+  
+  padding: 10px;
+
+  margin:auto; */
+
+  margin: 0px 0px 0px 20px;
+  top: 8px;
+  left: 16px;
+  font-size: 18px;
+}
+
+.jumby{
+  margin-bottom: 50px
+  height
+  height: 181px;
+}
+
+p {
+  width: 200px;
+  margin: 0px 0px 0px 0px;
+  align-content: center;
+}
