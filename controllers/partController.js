@@ -17,7 +17,7 @@ module.exports = {
     console.log("req.params " + req.params);
       db.Participants.findAll({
         where: {
-          userKey: req.params.queryParam
+          userKey: req.params.userKey
         }
       }).then(function (dbData) {
         res.json(dbData)
