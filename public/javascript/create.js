@@ -26,3 +26,15 @@ $("#submit").on("click", function(event){
 $(document).ready(function() {
   console.log(sessionStorage.getItem("userName"));
 });
+
+$(document).ready(function() {
+  console.log('ready');
+  
+  $("#logout").on("click", function(a) {
+  a.preventDefault()
+  console.log("logout");
+    $.get("api/users/logout")
+    window.location.replace("/login");
+  });//logout on click
+  
+  });//document.ready function

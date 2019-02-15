@@ -38,3 +38,15 @@ function loginUser (username, password) {
     console.log(err)
   });
 };
+
+$(document).ready(function() {
+  console.log('ready');
+  
+  $("#logout").on("click", function(a) {
+  a.preventDefault()
+  console.log("logout");
+    $.get("api/users/logout")
+    window.location.replace("/login");
+  });//logout on click
+  
+  });//document.ready function
