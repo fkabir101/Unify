@@ -37,7 +37,8 @@ module.exports = {
     db.Events.findOne({
       where: {
         id : req.params.id
-      }
+      },
+      include : [db.Users]
     }).then(function(dbData){
       res.json(dbData);
     });
@@ -52,10 +53,35 @@ module.exports = {
           id: req.params.id
         }
       })
-      .then(dbData => res.json(dbData))
+      .then(dbData =>   db.Events.findOne({
+        where: {
+          id : req.params.id
+        }
+      }).then(function(dbData){
+        res.json(dbData);
+      }))
       .catch(err => {
         console.log(err);
         res.status(500).json(err);
       });
+    },
+    getEventByUser : function(req, res){
+      db.Events.findAll({
+        where:{
+          UserId: String(req.user.id)
+        }
+      }).then(function(dbData){
+        res.json(dbData);
+      })
+    },
+    getParticipateByUser: function(req,res){
+      db.Participants.findAll({
+        where:{
+          userKey: String(req.user.id)
+        },
+        include : [db.Events]
+      }).then(function(dbData){
+        res.json(dbData);
+      })
     }
 }

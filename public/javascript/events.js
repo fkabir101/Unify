@@ -113,13 +113,14 @@ $("#eventList").on("click", ".event", function(){
 });
 
 function getEventPage(event){
+  console.log(event);
   const eventDiv = $(`<div class="p-3 border border-dark event" id="${event.id}">`);
   eventDiv
     .append(`<h1>${event.eventName}</h1>`)
-    .append(`<h3>${event.eventLocation}</h3>`) // add venue
+    .append(`<h3>Venue: ${event.eventVenue}, ${event.eventLocation}</h3>`) // add venue
     .append(`<h4>${event.eventTime}`)
     .append(`<h4>Participants: ${event.currentParticipants}/${event.maxLimit}</h4>`)
-    .append(`<p>Organizer: ${event.UserId}</p>`)
+    .append(`<p>Organizer: ${event.User.username}</p>`) // ad organizer
     .append(`<p>${event.eventDescription}</p>`);
 
     //console.log("Event Id: " + event.id);
@@ -147,12 +148,13 @@ $("#eventList").on("click", ".join", function (event) {
 function check (event) {
   var max = event.maxLimit;
   var curr = event.currentParticipants;
+ // var ifIn = ifIn(event);
   if (max <= curr) {
     alert("This event is already full");
   }
   // else if (req.user.id === undefined) {
   //   window.location.replace("/login");
-  // }
+  // } res.json({success : false})
   else {//find out who is logged in req.user
     
     addParticipant(event);
@@ -161,6 +163,7 @@ function check (event) {
 }; //check
 
 function addParticipant(event) {
+  console.log("post");
   const z = {
     eventKey : event.id
   };
@@ -177,5 +180,32 @@ function updateEvents(){
     $.ajax({
       url: `/api/event/goEvent/${eventId}`,
       method: "PUT"
+    }).then(function(dbData){
+     // console.log(dbData);
+      getEventPage(dbData);
     })
 }; //update events
+
+
+// function ifIn(event) {
+//   $.ajax({
+//     url: "/api/userInfo/userPage",
+//     method: "GET",
+//   }).then(function(data){
+//     userObject = {
+//       id : data.id,
+//       username : data.username,
+//       email : data.email
+//     }
+//   });
+
+//   $.ajax({
+//     url: `/api/part/getParticipant/${userObject.id}`,
+//     method: "GET",
+//   }).then(function(data){
+    
+//   });
+
+
+
+// };// ifIn
