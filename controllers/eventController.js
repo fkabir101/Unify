@@ -37,7 +37,8 @@ module.exports = {
     db.Events.findOne({
       where: {
         id : req.params.id
-      }
+      },
+      include : [db.Users]
     }).then(function(dbData){
       res.json(dbData);
     });
@@ -57,5 +58,14 @@ module.exports = {
         console.log(err);
         res.status(500).json(err);
       });
+    },
+    getEventByUser : function(req, res){
+      db.Events.findAll({
+        where:{
+          UserId: String(req.user.id)
+        }
+      }).then(function(dbData){
+        res.json(dbData);
+      })
     }
 }

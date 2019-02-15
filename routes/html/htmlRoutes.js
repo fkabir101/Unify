@@ -19,6 +19,9 @@ router.route("/signup").get(function(req, res) {
 router.route("/events").get(function(req, res) {
   res.sendFile(path.join(__dirname, "../../public/events.html"));
 });
+router.route("/user").get(function(req, res) {
+  res.sendFile(path.join(__dirname, "../../public/user.html"));
+});
 // app.get('/logout', function(req, res){
 //   req.logout();
 //   res.redirect('/login');

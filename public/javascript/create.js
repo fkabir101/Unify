@@ -4,6 +4,7 @@ $("#submit").on("click", function(event){
   const newEvent ={
     eventName : $('#eventName').val().trim(),
     eventLocation : $('#location').val().trim(),
+    eventVenue : $('#eventVenue').val().trim(),
     eventDescription : $('#description').val().trim(),
     eventTime : $('#date').val().trim(),
     maxLimit : $('#limit').val().trim(),
