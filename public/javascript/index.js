@@ -25,7 +25,7 @@
 $(document).ready(function() {
 //console.log('ready');
 
-$("#logout").on("click", function(a) {
+$(".logout").on("click", function(a) {
 a.preventDefault()
 console.log("logout");
   $.get("api/users/logout")

@@ -198,6 +198,7 @@ function ifIn(event, cb) {
       email: data.email
     }
 
+    console.log("userObject " + userObject);
 
     $.ajax({
       url: `/api/part/getParticipant/${userObject.id}`,
@@ -213,23 +214,20 @@ function ifIn(event, cb) {
           cbBool = true;
         }
       }
-
       cb(cbBool);
-      
-
-
-      // console.log("we got here");
-      // console.log("Callback Boolean: " + cbBool);
-      // console.log("EventId: " + event.id);
-      // console.log("and after");
-      // if (eventObject.key === event.id) {
-      //   cb(true);
-      // } else {
-      //   cb(false)
-      // }
-
     });
-
   });
-
 }; // ifIn
+
+
+$(document).ready(function() {
+  //console.log('ready');
+  
+  $(".logout").on("click", function(a) {
+  a.preventDefault()
+  console.log("logout");
+    $.get("api/users/logout")
+    window.location.replace("/login");
+  });//logout on click
+  
+  });//document.ready function
