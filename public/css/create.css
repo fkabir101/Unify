@@ -1,11 +1,14 @@
 body{
-  background:url('http://cdn.wallpapersafari.com/13/6/Mpsg2b.jpg');
-  margin:0px;
+  background:url('http://cdn.wallpapersafari.com/13/6/Mpsg2b.jpg')no-repeat fixed ;
+ 
   font-family: 'Ubuntu', sans-serif;
   /* background-size: 100% 110%; */
-  object-fit: cover;
+ object-fit: fill
+ /* background: no-repeat fixed center; */
 }
-
+.col-md-3{
+  height: 125px;
+}
 .img-loc{
   /* float: left;
   width: 300px;
@@ -19,16 +22,26 @@ body{
   left: 16px;
   font-size: 18px;
 }
+row{
+  height: 125px;
+  object-position: 5px 100%;
+  grid-template: 15px / auto auto auto;
+}
 
 .jumby{
   margin-bottom: 50px;
-  background-color: royalblue;
-  height: 125px;
+  background-color: black;
+  height: 131px;
   margin: 0px 0px 370px 0px;
+  border-top: 6px solid yellow;
+}
+.card-body{
+
 }
 
 .div2{
   height: 125;
+  object-position: 5px 100%;
 }
 
 p {
@@ -80,4 +93,8 @@ a:link, a:visited {
 a:hover, a:active {
   text-decoration-color: blueviolet;
   color: purple;
+}
+
+.row1{
+  height: auto;
 }
