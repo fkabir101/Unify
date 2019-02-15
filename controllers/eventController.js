@@ -75,6 +75,13 @@ module.exports = {
       })
     },
     getParticipateByUser: function(req,res){
-      
+      db.Participants.findAll({
+        where:{
+          userKey: String(req.user.id)
+        },
+        include : [db.Events]
+      }).then(function(dbData){
+        res.json(dbData);
+      })
     }
 }

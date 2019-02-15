@@ -67,5 +67,34 @@ function generateEvents(dbData){
 }
 
 function getParticipating(){
-  $("#display").html("");
+  //userParticipate
+  $.ajax({
+    url: "/api/event/userParticipate",
+    method: "GET",
+  }).then(function(dbData){
+    generateParticipating(dbData);
+  });
+}
+
+function generateParticipating(dbData){
+  console.log(dbData);
+  const allEvents = $("<div>");
+  dbData.forEach(function(event){
+    const eventDiv = $(`<div class="p-3 border border-dark event" id="${event.Event.id}">`);
+
+    const nameDiv = $(`<div class = 'm-3 row'>`);
+    nameDiv.append(`<h3>${event.Event.eventName}: ${event.Event.eventTime}</h3>`);
+
+    const categoryDiv = $(`<div class = 'm-3 row'>`);
+    categoryDiv.append(`<h5>Category: ${event.Event.category}</h5>`);
+
+    eventDiv.append(`<button type="button" class="btn btn-danger leave" >Leave Event</button>`);
+
+
+    eventDiv.append(nameDiv);
+    eventDiv.append(categoryDiv);
+    allEvents.append(eventDiv);
+  });
+
+  $("#display").html(allEvents);
 }
