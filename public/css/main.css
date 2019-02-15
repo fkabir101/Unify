@@ -1,5 +1,5 @@
 body{
-  background:url('../image/smash\ ultimate\ cover\ main.png');
+  background:url('../image/50\ Shades\ of\ Grey.jpg');
   margin:0px;
   font-family: 'Ubuntu', sans-serif;
   /* background-size: 100% 110%; */
@@ -43,9 +43,7 @@ row{
   
   border-top: 6px solid yellow;
 }
-.card-body{
 
-}
 
 .div2{
   height: 125;
@@ -54,7 +52,7 @@ row{
 
 p {
   
-  width: 0px;
+ color: black;
   margin: 0px 0px 0px 0px;
   /* align-content: center; */
 
@@ -92,7 +90,7 @@ ul{
 
 a:link, a:visited {
 
-
+  color: black;
   text-align: center;
   text-decoration: none;
   display: inline-block;

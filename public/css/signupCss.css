@@ -1,5 +1,5 @@
 body{
-  background:url('../image/smash\ ultimate\ cover\ main.png');
+  background:url('../image/50\ Shades\ of\ Grey.jpg');
   margin:0px;
   font-family: 'Ubuntu', sans-serif;
   /* background-size: 100% 110%; */
@@ -43,9 +43,7 @@ row{
   
   border-top: 6px solid yellow;
 }
-.card-body{
 
-}
 
 .div2{
   height: 125;
@@ -154,13 +152,12 @@ button:hover, a:hover {
 }
 /* .signup-header h1 {
    text-shadow: 0px 5px 15px #000; */
-}
+
 .signup-form {
-  box-sizing: border-box;
-  padding-top: 15px;
-  padding-bottom: 10%;
-  margin: 5% auto;
-  text-align: center;
+  border:.5px solid #fff;
+  background:#4facff;
+  border-radius:10px;
+  box-shadow:0px 0px 10px #000;
 }
 .signup-form h3 {
   text-align:left;
