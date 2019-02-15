@@ -7,29 +7,29 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
-  <link rel="stylesheet" href="style.css">
   <title>Title</title>
 </head>
 
 <body>
-  <div class = "container">
-      <h1>Username goes here</h1>
+  <div class="container">
+    <h1 id="username">Username</h1>
   </div>
-  <div class = "container">
-    <div class = "row">
+  <div class="container">
+    <div class="row">
       <!-- adjust height when header placed -->
-      <div class = "column-3 bg-dark text-light" style = "height:90vh; width:30vh">
+      <div class="col-3 bg-dark text-light" style="height:90vh; width:30vh">
         <ul>
-          <li>User Info</li>
-          <li>Owned Events</li>
-          <li>Participating Events</li>
-        </ul>
+          <li id="userInfo">User Info</li>
+          <li id="event">Owned Events</li>
+          <li id="participating">Participating Events</li>
+        </ul>      
+      </div>
+      <div class="col-9" id="display"></div>
     </div>
-  </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.min.js"></script>
-  <script src="javascript/user.js"></script>>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <script src="javascript/user.js"></script>
 </body>
 
 </html>
