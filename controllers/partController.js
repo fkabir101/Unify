@@ -4,7 +4,8 @@ module.exports = {
   addParticipant : function(req, res){
     db.Participants.create({
       eventKey: req.body.eventKey,
-      userKey: req.user.id
+      userKey: req.user.id,
+      EventId: req.body.eventKey
     })
     .then(dbParticipant => res.json(dbParticipant))
     .catch(err => {
