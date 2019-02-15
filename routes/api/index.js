@@ -4,9 +4,12 @@ const userRoutes = require('./userRoutes');
 const createRoutes = require("./createRoutes");
 const eventRoutes = require("./eventRoutes");
 const partRouts = require("./participantRouts");
+const userInfo = require("./userInfoRoutes");
+
 db = require("../../models");
 //router.use("/", apiRoutes);
 router.use('/users', userRoutes);
+router.use("/userInfo", userInfo);
 
 //module.exports = router;
 router.use("/", createRoutes);

@@ -49,9 +49,6 @@ var Events = sequelize.define("Events", {
 Events.associate = function(models) {
   models.Events.belongsTo(models.Users, {
     onDelete: "CASCADE",
-    foreignKey: {
-      //allowNull: false
-    }
   });
   
   models.Events.belongsToMany(models.Participants,
