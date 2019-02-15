@@ -23,7 +23,7 @@
 // });
 
 $(document).ready(function() {
-console.log('ready');
+//console.log('ready');
 
 $("#logout").on("click", function(a) {
 a.preventDefault()

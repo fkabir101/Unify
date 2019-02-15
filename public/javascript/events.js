@@ -148,10 +148,13 @@ $("#eventList").on("click", ".join", function (event) {
 function check (event) {
   var max = event.maxLimit;
   var curr = event.currentParticipants;
- // var ifIn = ifIn(event);
+ // var ifInn = ifIn(event);
   if (max <= curr) {
     alert("This event is already full");
   }
+  // else if (ifInn) {
+  //   alert("You already joined this event")
+  // }
   // else if (req.user.id === undefined) {
   //   window.location.replace("/login");
   // } res.json({success : false})
@@ -163,7 +166,7 @@ function check (event) {
 }; //check
 
 function addParticipant(event) {
-  console.log("post");
+ // console.log("post");
   const z = {
     eventKey : event.id
   };
@@ -181,31 +184,43 @@ function updateEvents(){
       url: `/api/event/goEvent/${eventId}`,
       method: "PUT"
     }).then(function(dbData){
-     // console.log(dbData);
+    // console.log(dbData);
       getEventPage(dbData);
     })
 }; //update events
 
 
-// function ifIn(event) {
-//   $.ajax({
-//     url: "/api/userInfo/userPage",
-//     method: "GET",
-//   }).then(function(data){
-//     userObject = {
-//       id : data.id,
-//       username : data.username,
-//       email : data.email
-//     }
-//   });
+function ifIn(event) {
+  $.ajax({
+    url: "/api/userInfo/userPage",
+    method: "GET",
+  }).then(function(data){
+    userObject = {
+      id : data.id,
+      username : data.username,
+      email : data.email
+    }
+  
 
-//   $.ajax({
-//     url: `/api/part/getParticipant/${userObject.id}`,
-//     method: "GET",
-//   }).then(function(data){
-    
-//   });
+  $.ajax({
+    url: `/api/part/getParticipant/${userObject.id}`,
+    method: "GET",
+  }).then(function(data) {
+    console.log("get paricipants");
+    console.log(data);
+    eventObject = {
+      key : data.eventKey
+    }
+  });
+  console.log("we got here");
+  console.log("EventKey: " + eventObject.key)
+  console.log("EventId: " + event.id);
+  console.log("and after");
+  if (eventObject.key === event.id) {
+    return true;
+  }
+  else {return false;}
 
+});
 
-
-// };// ifIn
+};// ifIn

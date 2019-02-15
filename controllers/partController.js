@@ -12,15 +12,15 @@ module.exports = {
       res.json(err);
     })
   },
-  // getParticipant: function (req, res) {
-  //   console.log(req.params);
-  //     db.Events.findAll({
-  //       where: {
-  //         eventKey: req.params.queryParam
-  //       }
-  //     }).then(function (dbData) {
-  //       res.json(dbData)
-  //     })
-    
+  getParticipant: function (req, res) {
+    console.log("req.params " + req.params);
+      db.Participants.findAll({
+        where: {
+          userKey: req.params.queryParam
+        }
+      }).then(function (dbData) {
+        res.json(dbData)
+      })
+    }
   
 }
