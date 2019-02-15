@@ -30,7 +30,32 @@ module.exports = {
         }
       }).then(function (dbData) {
         res.json(dbData)
-      })
+      });
     }
-  }
+  },
+  getEventPage: function(req, res){
+    db.Events.findOne({
+      where: {
+        id : req.params.id
+      }
+    }).then(function(dbData){
+      res.json(dbData);
+    });
+  },
+  update: function (req, res) {
+    db
+      .Events
+      .update({
+        currentParticipants: Sequelize.literal("currentParticipants + 1")
+      }, {
+        where: {
+          id: req.params.id
+        }
+      })
+      .then(dbData => res.json(dbData))
+      .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+    }
 }
