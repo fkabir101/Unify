@@ -17,8 +17,8 @@ $(document).ready(function() {
     else {
     //storing username
     sessionStorage.setItem("userName", userInfo.username);
-    const userName = sessionStorage.getItem("userName");
-    console.log("username: " + userName);
+    //const userName = sessionStorage.getItem("userName");
+    //console.log("username: " + userName);
     }
 
     //run the function and clear the form

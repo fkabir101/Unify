@@ -52,7 +52,13 @@ module.exports = {
           id: req.params.id
         }
       })
-      .then(dbData => res.json(dbData))
+      .then(dbData =>   db.Events.findOne({
+        where: {
+          id : req.params.id
+        }
+      }).then(function(dbData){
+        res.json(dbData);
+      }))
       .catch(err => {
         console.log(err);
         res.status(500).json(err);

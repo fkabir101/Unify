@@ -12,12 +12,12 @@ router
   .route('/login')
   .post(passport.authenticate('local'), userController.login);
 
-// router
-//  .route('/logout')
-//  .get((req, res) => {
-//    req.logout();
-//    res.redirect('/');
-//  });
+router
+ .route('/logout')
+ .get((req, res) => {
+   req.logout();
+   res.redirect('/');
+ });
 
 router
   .route('/:username')

@@ -152,7 +152,7 @@ function check (event) {
   }
   // else if (req.user.id === undefined) {
   //   window.location.replace("/login");
-  // }
+  // } res.json({success : false})
   else {//find out who is logged in req.user
     
     addParticipant(event);
@@ -177,5 +177,8 @@ function updateEvents(){
     $.ajax({
       url: `/api/event/goEvent/${eventId}`,
       method: "PUT"
+    }).then(function(dbData){
+     // console.log(dbData);
+      getEventPage(dbData);
     })
 }; //update events
