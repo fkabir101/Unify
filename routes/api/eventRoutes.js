@@ -8,4 +8,6 @@ router.route("/goEvent/:id")
   .put(eventController.update)
 router.route("/userEvent")
   .get(eventController.getEventByUser)
+router.route("/userParticipate")
+  .get(eventController.getParticipateByUser)
 module.exports = router;
