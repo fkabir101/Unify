@@ -67,5 +67,8 @@ module.exports = {
       }).then(function(dbData){
         res.json(dbData);
       })
+    },
+    getParticipateByUser: function(req,res){
+      
     }
 }
