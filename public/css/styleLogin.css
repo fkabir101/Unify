@@ -1,5 +1,5 @@
 body{
-  background:url('../image/smash\ ultimate\ cover\ main.png');
+  background:url('../image/50\ Shades\ of\ Grey.jpg');
   margin:0px;
   font-family: 'Ubuntu', sans-serif;
   /* background-size: 100% 110%; */
@@ -11,7 +11,6 @@ body{
    background-repeat: no-repeat;
    background-size: cover;
 }
-
 
 .col-md-3{
   height: 125px;
@@ -154,12 +153,12 @@ button:hover, a:hover {
 }
 /* .login-header h1 {
    text-shadow: 0px 5px 15px #000; */
-}
+
 .login-form {
-  border:.5px solid #fff;
-  background:#4facff;
+ 
+  
   border-radius:10px;
-  box-shadow:0px 0px 10px #000;
+
 }
 .login-form h3 {
   text-align:left;
