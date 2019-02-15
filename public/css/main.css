@@ -1,0 +1,144 @@
+body{
+  background:url('../image/smash\ ultimate\ cover\ main.png');
+  margin:0px;
+  font-family: 'Ubuntu', sans-serif;
+  /* background-size: 100% 110%; */
+   /* Full height */
+  
+
+   /* Center and scale the image nicely */
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+
+
+.col-md-3{
+  height: 125px;
+}
+.img-loc{
+  /* float: left;
+  width: 300px;
+  
+  padding: 10px;
+
+  margin:auto; */
+  position: 10px;
+  margin: 0px 0px 0px 20px;
+  top: 8px;
+  left: 16px;
+  font-size: 18px;
+  height: 125px;
+  width: 200px;
+}
+row{
+  height: 125px;
+  object-position: 5px 100%;
+}
+
+.jumby{
+  margin-bottom: 50px;
+  background-color: black;
+  height: 131px;
+  
+  border-top: 6px solid yellow;
+}
+.card-body{
+
+}
+
+.div2{
+  height: 125;
+  object-position: 5px 100%;
+}
+
+p {
+  
+  width: 0px;
+  margin: 0px 0px 0px 0px;
+  /* align-content: center; */
+
+  position: 20px 20px 20px 20px;
+  left: 0;
+  /* top: 50%; */
+
+  position: 10px;
+  font-size: 60px;
+}
+.ul1{
+  position: 10px;
+  
+  margin: 0px 0px 0px 20px;
+  top: 8px;
+  left: -15px;
+  font-size: 18px;
+}
+
+ul{
+  width: 681px;
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  font-size: 18px;
+  height: 83px;
+  margin: 83px 0px 0px 0px;
+}
+
+.logo{
+  width: 200px;
+  text-align: center;
+  margin: 0px 0px 400px 0px;
+}
+
+a:link, a:visited {
+
+
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover, a:active {
+  text-decoration-color: white;
+  color: purple;
+}
+
+.row1{
+  height: auto;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  /* text-align: center; */
+  font-family: arial;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
