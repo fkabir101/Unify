@@ -54,6 +54,9 @@ function generateEvents(dbData){
     const categoryDiv = $(`<div class = 'm-3 row'>`);
     categoryDiv.append(`<h5>Category: ${event.category}</h5>`);
 
+    eventDiv.append(`<button type="button" class="btn btn-success update" >Update</button>`);
+    eventDiv.append(`<button type="button" class="btn btn-danger delete" >Delete</button>`);
+
 
     eventDiv.append(nameDiv);
     eventDiv.append(categoryDiv);
