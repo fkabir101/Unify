@@ -2,5 +2,88 @@ body{
   background:url('http://cdn.wallpapersafari.com/13/6/Mpsg2b.jpg');
   margin:0px;
   font-family: 'Ubuntu', sans-serif;
-	/* background-size: 100% 110%; */
+  /* background-size: 100% 110%; */
+  object-fit: cover;
+}
+
+.form-group col-4{
+  top: 15px;
+}
+
+
+.img-loc{
+  /* float: left;
+  width: 300px;
+  
+  padding: 10px;
+
+  margin:auto; */
+  position: 10px;
+  margin: 0px 0px 0px 20px;
+  top: 8px;
+  left: 16px;
+  font-size: 18px;
+}
+
+.jumby{
+  margin-bottom: 50px;
+  background-color: black;
+  height: 125px;
+  margin: 0px 0px 370px 0px;
+  border-top: 6px solid yellow;
+}
+
+.div2{
+  height: 125;
+}
+
+p {
+  
+  width: 0px;
+  margin: 0px 0px 0px 0px;
+  /* align-content: center; */
+
+  position: 20px 20px 20px 20px;
+  left: 0;
+  /* top: 50%; */
+
+  position: 10px;
+  font-size: 60px;
+}
+.ul1{
+  position: 10px;
+  
+  margin: 0px 0px 0px 20px;
+  top: 8px;
+  left: -15px;
+  font-size: 18px;
+}
+
+ul{
+  width: 681px;
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  font-size: 18px;
+  height: 83px;
+  margin: 83px 0px 0px 0px;
+}
+
+.logo{
+  width: 200px;
+  text-align: center;
+  margin: 0px 0px 400px 0px;
+}
+
+a:link, a:visited {
+
+
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover, a:active {
+  text-decoration-color: blueviolet;
+  color: purple;
 }

@@ -5,7 +5,9 @@ body{
   /* background-size: 100% 110%; */
   object-fit: cover;
 }
-
+.col-md-3{
+  height: 125px;
+}
 .img-loc{
   /* float: left;
   width: 300px;
@@ -19,17 +21,27 @@ body{
   left: 16px;
   font-size: 18px;
 }
+row{
+  height: 125px;
+}
 
 .jumby{
   margin-bottom: 50px;
-  background-color: royalblue;
-  height: 240px;
+  background-color: black;
+  height: 125px;
   margin: 0px 0px 370px 0px;
+  border-top: 6px solid yellow;
+}
+
+
+.div2{
+  height: 125;
 }
 
 p {
- 
-  margin: 0px 0px 0px 20px;
+  
+  width: 0px;
+  margin: 0px 0px 0px 0px;
   /* align-content: center; */
 
   position: 20px 20px 20px 20px;
@@ -46,4 +58,33 @@ p {
   top: 8px;
   left: -15px;
   font-size: 18px;
+}
+
+ul{
+  width: 681px;
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  font-size: 18px;
+  height: 83px;
+  margin: 83px 0px 0px 0px;
+}
+
+.logo{
+  width: 200px;
+  text-align: center;
+  margin: 0px 0px 400px 0px;
+}
+
+a:link, a:visited {
+
+
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover, a:active {
+  text-decoration-color: blueviolet;
+  color: purple;
 }
