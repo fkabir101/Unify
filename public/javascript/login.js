@@ -5,6 +5,16 @@ console.log("login ready");
 //console.log(sessionStorage.getItem("userName"));
 console.log("Local User: " + localUser);
 
+if (localUser === "null" || localUser === null || localUser === undefined) {
+  $(".logout").hide();
+}
+else{
+  $(".login").hide();
+}
+
+
+
+
 
   //this function takes the username and password and stores them in an object
   $("#submit").on("click", function(e) {
@@ -53,7 +63,7 @@ console.log("Local User: " + localUser);
   $(".user").on("click", function(c) {
     c.preventDefault();
    // console.log("yo")
-    if (localUser === "null" || localUser === null) {
+    if (localUser === "null" || localUser === null || localUser === undefined) {
       window.location.replace("/login")
     }
     else {
@@ -64,7 +74,7 @@ console.log("Local User: " + localUser);
   $(".create").on("click", function(d) {
     d.preventDefault();
     console.log("yo")
-    if (localUser === "null" || localUser === null) {
+    if (localUser === "null" || localUser === null || localUser === undefined) {
       window.location.replace("/login")
     }
     else {
