@@ -1,6 +1,6 @@
 let eventId = null;
-
 var userLog = false;
+const locallUser = sessionStorage.getItem("userName");
 
 $("#searchCategory").on("change", function () {
   searchCategory = $("#searchCategory").val().trim();
@@ -131,6 +131,11 @@ function getEventPage(event) {
 //this function is called when the user clicks to add an event.  It calls information from the database on the event
 $("#eventList").on("click", ".join", function (event) {
   event.preventDefault();
+  if (locallUser === "null" || locallUser === null) {
+    alert("You must log in befor signing up for an event!")
+    window.location.replace("/login")
+  }
+  else{
   //console.log("click");
   eventId = $(this).parent('.event').attr('id');
   // console.log("Join id: " + eventId);
@@ -141,6 +146,7 @@ $("#eventList").on("click", ".join", function (event) {
     //const eventId = `${eventId}`;
     check(data);
   });
+}
 });
 
 function check(event) {
@@ -220,38 +226,3 @@ function ifIn(event, cb) {
     });
   });
 }; // ifIn
-
-
-$(document).ready(function() {
-  //console.log('ready');
-  $(".logout").on("click", function(a) {
-  a.preventDefault()
-  console.log("logout");
-    $.get("api/users/logout")
-    window.location.replace("/login");
-  });//logout on click
-
-
-  // this function checks if the user is logged in.
-  $.ajax({
-    url: "/api/userInfo/userPage",
-    method: "GET",
-  }).then(function (data) {
-   // console.log(data);
-    if (err) {
-      console.log("undefined");
-    }
-  });
-
-
-$(document).ready(function() {
-  console.log('ready');
-  
-  $("#logout").on("click", function(a) {
-  a.preventDefault()
-  console.log("logout");
-    $.get("api/users/logout")
-    window.location.replace("/login");
-  });//logout on click
-  
-  });//document.ready function

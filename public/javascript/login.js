@@ -1,5 +1,11 @@
+const localUser = sessionStorage.getItem("userName");
+
 $(document).ready(function() {
-//console.log("ready");
+console.log("login ready");
+//console.log(sessionStorage.getItem("userName"));
+console.log("Local User: " + localUser);
+
+
   //this function takes the username and password and stores them in an object
   $("#submit").on("click", function(e) {
     e.preventDefault();
@@ -19,12 +25,13 @@ $(document).ready(function() {
     sessionStorage.setItem("userName", userInfo.username);
     //const userName = sessionStorage.getItem("userName");
     //console.log("username: " + userName);
-    }
+    
 
     //run the function and clear the form
     loginUser (userInfo.username, userInfo.password);
     $("#username-input").val('');
     $("#password-input").val('');
+    }
 
 
   });// #submit on click
@@ -34,6 +41,7 @@ $(document).ready(function() {
     a.preventDefault();
     //console.log("logout");
       $.get("api/users/logout")
+     sessionStorage.setItem("userName", null);
       window.location.replace("/login");
     });//logout on click
 
@@ -42,22 +50,62 @@ $(document).ready(function() {
     window.location.replace("/signup");
   })
 
+  $(".user").on("click", function(c) {
+    c.preventDefault();
+   // console.log("yo")
+    if (localUser === "null" || localUser === null) {
+      window.location.replace("/login")
+    }
+    else {
+      window.location.replace("/user")
+    }
+  });
+
+  $(".create").on("click", function(d) {
+    d.preventDefault();
+    console.log("yo")
+    if (localUser === "null" || localUser === null) {
+      window.location.replace("/login")
+    }
+    else {
+      window.location.replace("/create")
+    }
+  });
  
 
+  $("#submit-button").on("click", function (e) {
+    e.preventDefault();
+
+    //console.log("click");
+
+    const userInfo = {
+      email: $("#email-input").val().trim(),
+      username: $("#username-input").val().trim(),
+      password: $("#password-input").val().trim()
+    };
+    if (userInfo.username === "null" || userInfo.username === null) {
+      alert("Pick a Different Username!");
+      return false;
+    }
+    else {
+    //console.log (userInfo);
+    sessionStorage.setItem("userName", userInfo.username);
+    $.ajax({
+      url: '/api/users',
+      method: 'POST',
+      data: userInfo
+    })
+      .then((Data) => {
+        //console.log(Data);
+        loginUser (userInfo.username, userInfo.password);
+        console.log("hey")
+        location.replace(Data)
+      })
+      .catch(err => console.log(err));
+    }
+  });// submit button
+
 });// document.ready function
-
-// from John's loginjs.js
-$('.error-page').hide(0);
-
-$('.login-button , .no-access').click(function(){
-  $('.login').slideUp(500);
-  $('.error-page').slideDown(1000);
-});
-
-$('.try-again').click(function(){
-  $('.error-page').hide(0);
-  $('.login').slideDown(1000);
-});
 
 function loginUser (username, password) {
   $.post("/api/users/login", {
@@ -69,14 +117,3 @@ function loginUser (username, password) {
     console.log(err)
   });
 };
-$(document).ready(function() {
-  console.log('ready');
-  
-  $("#logout").on("click", function(a) {
-  a.preventDefault()
-  console.log("logout");
-    $.get("api/users/logout")
-    window.location.replace("/login");
-  });//logout on click
-  
-  });//document.ready function
