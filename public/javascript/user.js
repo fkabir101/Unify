@@ -99,3 +99,8 @@ function generateParticipating(dbData){
   $("#display").html(allEvents);
 }
 
+$(document).ready(function() {
+  if (sessionStorage.getItem("userName") === "null"){
+  window.location.replace("/login");
+}
+});

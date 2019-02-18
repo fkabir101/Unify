@@ -5,5 +5,9 @@ router
   .route("/")
   .post(partController.addParticipant);
 
+router
+  .route("/getParticipant/:userKey")
+  .get(partController.getParticipant);
+
 
   module.exports = router;
