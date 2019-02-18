@@ -109,3 +109,8 @@ $("#display").on("click", ".leave", function (event) {
   });
 });
 
+$(document).ready(function() {
+  if (sessionStorage.getItem("userName") === "null"){
+  window.location.replace("/login");
+}
+});

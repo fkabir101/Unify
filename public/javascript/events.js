@@ -1,30 +1,30 @@
 let eventId = null;
+var userLog = false;
+const locallUser = sessionStorage.getItem("userName");
 
-$("#searchCategory").on("change",function(){
+$("#searchCategory").on("change", function () {
   searchCategory = $("#searchCategory").val().trim();
   let searchArray = [];
-  if(searchCategory === "Location"){
+  if (searchCategory === "Location") {
     searchArray = locationSearch();
     createSearch(searchCategory, searchArray)
-  }
-  else if(searchCategory === "Category"){
+  } else if (searchCategory === "Category") {
     searchArray = categorySearch();
     createSearch(searchCategory, searchArray);
-  }
-  else{
+  } else {
     nameSearch();
   }
 });
 
 // create div to add new search form bassed of of the type and array passed in
-function createSearch(searchType, searchArray){
+function createSearch(searchType, searchArray) {
   const formDiv = $(`<div>`);
   const form = $(`<select class='custom-select' id='${searchType}'>`);
-  const label =$(`<label for="${searchType}">${searchType}:</label>`);
+  const label = $(`<label for="${searchType}">${searchType}:</label>`);
   const slected = $(`<option selected>${searchType}</option>`);
-  
+
   form.append(slected);
-  for(let i=0; i<searchArray.length;i++){
+  for (let i = 0; i < searchArray.length; i++) {
     var option = `<option value="${searchArray[i]}">${searchArray[i]}</option>`;
     form.append(option);
   }
@@ -33,18 +33,18 @@ function createSearch(searchType, searchArray){
   $("#searchParam").html(formDiv);
 }
 // returns an array of locations
-function locationSearch(){
+function locationSearch() {
   const locationArray = ["NJ", "NY", "PA"];
   return locationArray;
 }
 // returns an array of catgeories
-function categorySearch(){
+function categorySearch() {
   const categoryArray = ["Fighting Games", "Smash"];
   return categoryArray;
 }
 
 // creates a field to search by name
-function nameSearch(){
+function nameSearch() {
   const formDiv = $(`<div>`);
   const label = $(`<label for="eventName">Event Name:</label>`);
   const input = $(`<input type="text" class="form-control" id="eventName" placeholder="Event Name">`);
@@ -55,19 +55,17 @@ function nameSearch(){
   $("#searchParam").html(formDiv);
 }
 
-$("#search").on("click", function(event){
+$("#search").on("click", function (event) {
   event.preventDefault();
   let queryType;
   let queryParam;
-  if($("#searchCategory").val().trim() === "Location"){
+  if ($("#searchCategory").val().trim() === "Location") {
     queryType = "eventLocation";
     queryParam = $("#Location").val().trim();
-  }
-  else if($("#searchCategory").val().trim() === "Category"){
+  } else if ($("#searchCategory").val().trim() === "Category") {
     queryType = "category";
     queryParam = $("#Category").val().trim();
-  }
-  else{
+  } else {
     queryType = "eventName";
     queryParam = $("#eventName").val().trim();
   }
@@ -75,15 +73,15 @@ $("#search").on("click", function(event){
   $.ajax({
     url: `/api/event/getEvent/${queryType}/${queryParam}`,
     method: "GET",
-  }).then(function(data){
+  }).then(function (data) {
     generateEvents(data);
   });
 })
 
 
-function generateEvents(dbData){
+function generateEvents(dbData) {
   const allEvents = $("<div>");
-  dbData.forEach(function(event){
+  dbData.forEach(function (event) {
     const eventDiv = $(`<div class="p-3 border border-dark event" id="${event.id}">`);
 
     const nameDiv = $(`<div class = 'm-3 row'>`);
@@ -101,19 +99,19 @@ function generateEvents(dbData){
   $("#eventList").html(allEvents);
 }
 
-$("#eventList").on("click", ".event", function(){
+$("#eventList").on("click", ".event", function () {
   const id = $(this).attr('id');
   //console.log("Const id: " + id);
   $.ajax({
     url: `/api/event/goEvent/${id}`,
     method: "GET",
-  }).then(function(data){
+  }).then(function (data) {
     getEventPage(data);
   });
 });
 
-function getEventPage(event){
-  console.log(event);
+function getEventPage(event) {
+ // console.log(event);
   const eventDiv = $(`<div class="p-3 border border-dark event" id="${event.id}">`);
   eventDiv
     .append(`<h1>${event.eventName}</h1>`)
@@ -123,102 +121,108 @@ function getEventPage(event){
     .append(`<p>Organizer: ${event.User.username}</p>`)
     .append(`<p>${event.eventDescription}</p>`);
 
-    //console.log("Event Id: " + event.id);
+  //console.log("Event Id: " + event.id);
 
   eventDiv.append(`<button type="button" class="btn btn-danger join" >join</button>`); // WORK ON HAVING IT ADD USERS IT THE PARTICIPANTS TABLE
 
-  $("#eventList").html(eventDiv);  
+  $("#eventList").html(eventDiv);
 }
 
 //this function is called when the user clicks to add an event.  It calls information from the database on the event
 $("#eventList").on("click", ".join", function (event) {
   event.preventDefault();
+  if (locallUser === "null" || locallUser === null) {
+    alert("You must log in befor signing up for an event!")
+    window.location.replace("/login")
+  }
+  else{
   //console.log("click");
   eventId = $(this).parent('.event').attr('id');
- // console.log("Join id: " + eventId);
+  // console.log("Join id: " + eventId);
   $.ajax({
     url: `/api/event/goEvent/${eventId}`,
     method: "GET",
-  }).then(function(data){
+  }).then(function (data) {
     //const eventId = `${eventId}`;
     check(data);
   });
+}
 });
 
-function check (event) {
+function check(event) {
   var max = event.maxLimit;
   var curr = event.currentParticipants;
- // var ifIn = ifIn(event);
-  if (max <= curr) {
-    alert("This event is already full");
-  }
-  // else if (req.user.id === undefined) {
-  //   window.location.replace("/login");
-  // } res.json({success : false})
-  else {//find out who is logged in req.user
-    
-    addParticipant(event);
-  
-  }
+  ifIn(event, function (ifInn) {
+    if (max <= curr) {
+      alert("This event is already full");
+    } else if (ifInn) {
+      alert("You already joined this event")
+    }
+    // else if (req.user.id === undefined) {
+    //   window.location.replace("/login");
+    // } res.json({success : false})
+    else { //find out who is logged in req.user
+
+      addParticipant(event);
+
+    }
+  });
+
 }; //check
 
 function addParticipant(event) {
-  console.log("post");
+  // console.log("post");
   const z = {
-    eventKey : event.id
+    eventKey: event.id
   };
   $.ajax({
     url: "/api/part",
     method: "POST",
     data: z
-  }).then(function() {
+  }).then(function () {
     updateEvents();
   })
-};// add participant
+}; // add participant
 
-function updateEvents(){
-    $.ajax({
-      url: `/api/event/goEvent/${eventId}`,
-      method: "PUT"
-    }).then(function(dbData){
-     // console.log(dbData);
-      getEventPage(dbData);
-    })
+function updateEvents() {
+  $.ajax({
+    url: `/api/event/goEvent/${eventId}`,
+    method: "PUT"
+  }).then(function (dbData) {
+    // console.log(dbData);
+    getEventPage(dbData);
+  })
 }; //update events
 
 
-// function ifIn(event) {
-//   $.ajax({
-//     url: "/api/userInfo/userPage",
-//     method: "GET",
-//   }).then(function(data){
-//     userObject = {
-//       id : data.id,
-//       username : data.username,
-//       email : data.email
-//     }
-//   });
+function ifIn(event, cb) {
+  $.ajax({
+    url: "/api/userInfo/userPage",
+    method: "GET",
+  }).then(function (data) {
+    userObject = {
+      id: data.id,
+      username: data.username,
+      email: data.email
+    }
 
-//   $.ajax({
-//     url: `/api/part/getParticipant/${userObject.id}`,
-//     method: "GET",
-//   }).then(function(data){
-    
-//   });
+    console.log("userObject " + userObject);
 
+    $.ajax({
+      url: `/api/part/getParticipant/${userObject.id}`,
+      method: "GET",
+    }).then(function (data) {
+      console.log("get paricipants");
 
+      var cbBool = false;
 
-// };// ifIn
-
-
-$(document).ready(function() {
-  console.log('ready');
-  
-  $("#logout").on("click", function(a) {
-  a.preventDefault()
-  console.log("logout");
-    $.get("api/users/logout")
-    window.location.replace("/login");
-  });//logout on click
-  
-  });//document.ready function
+      for (i=0; i<data.length; i++) {
+        console.log(data[i].eventKey);
+        if (data[i].eventKey === event.id) {
+          cbBool = true;
+        }
+      }
+      cb(cbBool);
+    });
+  });
+}; // ifIn

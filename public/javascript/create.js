@@ -1,4 +1,4 @@
-$("#submit").on("click", function(event){
+$("#submitCreate").on("click", function(event){
   event.preventDefault();
 
   const newEvent ={
@@ -24,17 +24,7 @@ $("#submit").on("click", function(event){
 });
 
 $(document).ready(function() {
-  console.log(sessionStorage.getItem("userName"));
+  if (sessionStorage.getItem("userName") === "null"){
+  window.location.replace("/login");
+}
 });
-
-$(document).ready(function() {
-  console.log('ready');
-  
-  $("#logout").on("click", function(a) {
-  a.preventDefault()
-  console.log("logout");
-    $.get("api/users/logout")
-    window.location.replace("/login");
-  });//logout on click
-  
-  });//document.ready function
