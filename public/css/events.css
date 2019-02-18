@@ -1,15 +1,11 @@
-body{
-  background:url('../image/50\ Shades\ of\ Grey.jpg');
-  margin:0px;
+body {
+  background: url(../image/50\ Shades\ of\ Grey.jpg);
+  margin: 0px;
   font-family: 'Ubuntu', sans-serif;
   /* background-size: 100% 110%; */
-   /* Full height */
-  
-
-   /* Center and scale the image nicely */
-   background-position: center;
-   background-repeat: no-repeat;
-   background-size: cover;
+  /* background-position: center; */
+  /* background-repeat: no-repeat; */
+  background-size: cover;
 }
 
 
@@ -54,7 +50,6 @@ row{
 
 p {
   
-  width: 0px;
   margin: 0px 0px 0px 0px;
   /* align-content: center; */
 
@@ -63,7 +58,6 @@ p {
   /* top: 50%; */
 
   position: 10px;
-  font-size: 60px;
 }
 .ul1{
   position: 10px;

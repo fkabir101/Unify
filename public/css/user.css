@@ -7,6 +7,8 @@ body {
   /* background-repeat: no-repeat; */
   background-size: cover;
 }
+
+
 .col-md-3{
   height: 125px;
 }
@@ -18,10 +20,10 @@ body {
 
   margin:auto; */
   position: 10px;
-  margin: 0px 10px 0px 20px;
+  margin: 0px 0px 0px 20px;
   top: 8px;
   left: 16px;
-  /* font-size: 18px; */
+  font-size: 18px;
   height: 125px;
   width: 200px;
 }
@@ -37,9 +39,7 @@ row{
   
   border-top: 6px solid yellow;
 }
-.card-body{
 
-}
 
 .div2{
   height: 125;
@@ -48,7 +48,7 @@ row{
 
 p {
   
-  width: 0px;
+ color: black;
   margin: 0px 0px 0px 0px;
   /* align-content: center; */
 
@@ -85,7 +85,7 @@ ul{
 
 a:link, a:visited {
 
-
+  color: black;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -136,88 +136,7 @@ button:hover, a:hover {
   opacity: 0.7;
 }
 
-.login {
-  margin:0 auto;
-  max-width:500px;
-}
-.login-header {
-  color:#fff;
-  text-align:center;
-  font-size:300%;
-}
-/* .login-header h1 {
-   text-shadow: 0px 5px 15px #000; */
+.userinfo{
 
-.login-form {
- 
-  
-  border-radius:10px;
-
-}
-.login-form h3 {
-  text-align:left;
-  margin-left:40px;
-  color:#fff;
-}
-.login-form {
-  box-sizing:border-box;
-  padding-top:15px;
-	padding-bottom:10%;
-  margin:5% auto;
-  text-align:center;
-}
-.login input[type="text"],
-.login input[type="password"] {
-  max-width:400px;
-	width: 80%;
-  line-height:3em;
-  font-family: 'Ubuntu', sans-serif;
-  margin:1em 2em;
-  border-radius:5px;
-  border:2px solid #f2f2f2;
-  outline:none;
-  padding-left:10px;
-}
-.login-form input[type="button"] {
-  height:30px;
-  width:100px;
-  background:#fff;
-  border:1px solid #f2f2f2;
-  border-radius:20px;
-  color: slategrey;
-  text-transform:uppercase;
-  font-family: 'Ubuntu', sans-serif;
-  cursor:pointer;
-}
-.sign-up{
-  color:#f2f2f2;
-  margin-left:-70%;
-  cursor:pointer;
-  text-decoration:underline;
-}
-.no-access {
-  color:#E86850;
-  margin:20px 0px 20px -57%;
-  text-decoration:underline;
-  cursor:pointer;
-}
-.try-again {
-  color:#f2f2f2;
-  text-decoration:underline;
-  cursor:pointer;
-}
-
-/*Media Querie*/
-@media only screen and (min-width : 150px) and (max-width : 530px){
-  .login-form h3 {
-    text-align:center;
-    margin:0;
-  }
-  .sign-up, .no-access {
-    margin:10px 0;
-  }
-  .login-button {
-    margin-bottom:10px;
-  }
 }
 

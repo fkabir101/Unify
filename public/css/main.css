@@ -1,17 +1,12 @@
-body{
-  background:url('../image/50\ Shades\ of\ Grey.jpg');
-  margin:0px;
+body {
+  background: url(../image/50\ Shades\ of\ Grey.jpg);
+  margin: 0px;
   font-family: 'Ubuntu', sans-serif;
   /* background-size: 100% 110%; */
-   /* Full height */
-  
-
-   /* Center and scale the image nicely */
-   background-position: center;
-   background-repeat: no-repeat;
-   background-size: cover;
+  /* background-position: center; */
+  /* background-repeat: no-repeat; */
+  background-size: cover;
 }
-
 
 .col-md-3{
   height: 125px;
@@ -61,7 +56,6 @@ p {
   /* top: 50%; */
 
   position: 10px;
-  font-size: 60px;
 }
 .ul1{
   position: 10px;
@@ -73,8 +67,6 @@ p {
 }
 
 ul{
-  width: 681px;
-  position: absolute;
   top: 8px;
   right: 16px;
   font-size: 18px;
@@ -127,7 +119,6 @@ button {
   background-color: #000;
   text-align: center;
   cursor: pointer;
-  width: 100%;
   font-size: 18px;
 }
 
