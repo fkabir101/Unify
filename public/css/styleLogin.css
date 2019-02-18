@@ -7,6 +7,14 @@ body {
   /* background-repeat: no-repeat; */
   background-size: cover;
 }
+
+#submit {
+  font-family: "lobster", "cursive";
+}
+#signup {
+  font-family: "comic sans ms", "lobster";
+}
+
 .col-md-3{
   height: 125px;
 }

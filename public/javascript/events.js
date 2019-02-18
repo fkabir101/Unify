@@ -131,7 +131,7 @@ function getEventPage(event) {
 //this function is called when the user clicks to add an event.  It calls information from the database on the event
 $("#eventList").on("click", ".join", function (event) {
   event.preventDefault();
-  if (locallUser === "null" || locallUser === null) {
+  if (locallUser === "null" || locallUser === null || locallUser === undefined) {
     alert("You must log in befor signing up for an event!")
     window.location.replace("/login")
   }
