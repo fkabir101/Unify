@@ -98,3 +98,4 @@ function generateParticipating(dbData){
 
   $("#display").html(allEvents);
 }
+
