@@ -117,10 +117,10 @@ function getEventPage(event){
   const eventDiv = $(`<div class="p-3 border border-dark event" id="${event.id}">`);
   eventDiv
     .append(`<h1>${event.eventName}</h1>`)
-    .append(`<h3>Venue: ${event.eventVenue}, ${event.eventLocation}</h3>`) // add venue
+    .append(`<h3>Venue: ${event.eventVenue}, ${event.eventLocation}</h3>`)
     .append(`<h4>${event.eventTime}`)
     .append(`<h4>Participants: ${event.currentParticipants}/${event.maxLimit}</h4>`)
-    .append(`<p>Organizer: ${event.User.username}</p>`) // ad organizer
+    .append(`<p>Organizer: ${event.User.username}</p>`)
     .append(`<p>${event.eventDescription}</p>`);
 
     //console.log("Event Id: " + event.id);

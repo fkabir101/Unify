@@ -98,4 +98,14 @@ function generateParticipating(dbData){
 
   $("#display").html(allEvents);
 }
+$("#display").on("click", ".leave", function (event) {
+  event.preventDefault();
+  eventId = $(this).parent('.event').attr('id');
+  $.ajax({
+    url: `/api/event/leaveEvent/${eventId}`,
+    method: "DELETE",
+  }).then(function(data){
+    console.log(data);
+  });
+});
 

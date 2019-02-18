@@ -18,7 +18,7 @@ function createEvents(events){
       .append(`<h6 class="card-subtitle mb-2 text-muted">Location: ${event.eventLocation}</h6>`)
       .append(`<h6 class="card-subtitle mb-2 text-muted">Venue: ${event.eventVenue}</h6>`)
       .append(`<p class="card-text">Date: ${event.eventTime}</p>`)
-      .append(`<p class="card-text">Organizer: admin</p>`);
+      .append(`<p class="card-text">Organizer: ${event.User.username}</p>`);
 
     cardDiv.append(cardBody);
     $("#recent").append(cardDiv);

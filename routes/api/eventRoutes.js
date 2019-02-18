@@ -6,10 +6,14 @@ router.route("/getEvent/:queryType/:queryParam")
 router.route("/goEvent/:id")
   .get(eventController.getEventPage)
   .put(eventController.update);
+
 router.route("/userEvent")
   .get(eventController.getEventByUser);
 router.route("/userParticipate")
   .get(eventController.getParticipateByUser);
+
+router.route("/leaveEvent/:eventId")
+  .delete(eventController.leaveEvent);
 
 router.route("/mainRecent")
   .get(eventController.getRecentlyMadeEvents);
