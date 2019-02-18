@@ -12,5 +12,5 @@ router.route("/userParticipate")
   .get(eventController.getParticipateByUser);
 
 router.route("/mainRecent")
-  .get(eventController.getParticipateByUser);
+  .get(eventController.getRecentlyMadeEvents);
 module.exports = router;
