@@ -98,11 +98,23 @@ function generateParticipating(dbData){
 
   $("#display").html(allEvents);
 }
+// leave event
 $("#display").on("click", ".leave", function (event) {
   event.preventDefault();
   eventId = $(this).parent('.event').attr('id');
   $.ajax({
-    url: `/api/event/leaveEvent/${eventId}`,
+    url: `/api/event/goEvent/${eventId}`,
+    method: "DELETE",
+  }).then(function(data){
+    console.log(data);
+  });
+});
+// delete event
+$("#display").on("click", ".delete", function (event) {
+  event.preventDefault();
+  eventId = $(this).parent('.event').attr('id');
+  $.ajax({
+    url: `/api/event/goEvent/${eventId}`,
     method: "DELETE",
   }).then(function(data){
     console.log(data);

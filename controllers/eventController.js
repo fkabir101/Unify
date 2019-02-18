@@ -100,7 +100,7 @@ module.exports = {
     deleteEvent: function(req, res){
       db.Events.destroy({
         where:{
-          id : req.params.eventId 
+          id : req.params.id 
         }
       }).then(function(dbData){
         res.json({success:true});

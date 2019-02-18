@@ -3,7 +3,6 @@ $(document).ready(function () {
     url: "/api/event/mainRecent/",
     method: "GET",
   }).then(function(data){
-    console.log(data);
     createEvents(data);
   });
 });

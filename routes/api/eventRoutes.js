@@ -5,7 +5,8 @@ router.route("/getEvent/:queryType/:queryParam")
 
 router.route("/goEvent/:id")
   .get(eventController.getEventPage)
-  .put(eventController.update);
+  .put(eventController.update)
+  .delete(eventController.deleteEvent);
 
 router.route("/userEvent")
   .get(eventController.getEventByUser);
