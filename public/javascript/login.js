@@ -31,12 +31,16 @@ $(document).ready(function() {
 
 
   $(".logout").on("click", function(a) {
-    a.preventDefault()
-    console.log("logout");
+    a.preventDefault();
+    //console.log("logout");
       $.get("api/users/logout")
       window.location.replace("/login");
     });//logout on click
 
+  $("#signup").on("click", function(b) {
+    b.preventDefault();
+    window.location.replace("/signup");
+  })
 
  
 

@@ -1,5 +1,7 @@
 let eventId = null;
 
+var userLog = false;
+
 $("#searchCategory").on("change", function () {
   searchCategory = $("#searchCategory").val().trim();
   let searchArray = [];
@@ -222,12 +224,25 @@ function ifIn(event, cb) {
 
 $(document).ready(function() {
   //console.log('ready');
-  
   $(".logout").on("click", function(a) {
   a.preventDefault()
   console.log("logout");
     $.get("api/users/logout")
     window.location.replace("/login");
   });//logout on click
+
+
+  // this function checks if the user is logged in.
+  $.ajax({
+    url: "/api/userInfo/userPage",
+    method: "GET",
+  }).then(function (data) {
+   // console.log(data);
+    if (err) {
+      console.log("undefined");
+    }
+  });
+
+
   
   });//document.ready function

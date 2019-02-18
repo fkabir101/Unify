@@ -1,3 +1,17 @@
+@font-face {
+  font-family: 'Papyrus';
+  src: url('Papyrus-Regular.woff') format('woff'),
+   url('PAPYRUS.ttf') format('truetype');
+} 
+
+#submit{
+  font-family: "Papyrus", "Lobster";
+}
+
+#signup{
+  font-family: "Papyrus", "Comic Sans MS";
+}
+
 body{
   background:url('../image/50\ Shades\ of\ Grey.jpg');
   margin:0px;
@@ -226,3 +240,4 @@ button:hover, a:hover {
     margin-bottom:10px;
   }
 }
+
