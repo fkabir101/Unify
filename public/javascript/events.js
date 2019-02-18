@@ -158,10 +158,8 @@ function check(event) {
     } else if (ifInn) {
       alert("You already joined this event")
     }
-    // else if (req.user.id === undefined) {
-    //   window.location.replace("/login");
-    // } res.json({success : false})
-    else { //find out who is logged in req.user
+    
+    else {
 
       addParticipant(event);
 
@@ -189,9 +187,16 @@ function updateEvents() {
     url: `/api/event/goEvent/${eventId}`,
     method: "PUT"
   }).then(function (dbData) {
-    // console.log(dbData);
-    getEventPage(dbData);
-  })
+     console.log(dbData);
+    //getEventPage(dbData);
+    //location.reload();
+    $.ajax({
+      url: `/api/event/goEvent/${eventId}`,
+      method: "GET",
+    }).then(function (data) {
+      getEventPage(data);
+    });
+  });
 }; //update events
 
 
