@@ -1,35 +1,26 @@
-// When page loads, grab all recent events
-// $.get("/api/all", function(data) {
+$(document).ready(function () {
+  $.ajax({
+    url: "/api/event/mainRecent/",
+    method: "GET",
+  }).then(function(data){
+    console.log(data);
+    createEvents(data);
+  });
+});
 
-//   if (data.length !== 0) {
+function createEvents(events){
+  events.forEach(event => {
+    const cardDiv = $(`<div class="card">`);
+    const cardBody = $(`<div class="card-body">`);
 
-//     for (var i = 0; i < data.length; i++) {
+    cardBody
+      .append(`<h4 class="card-title">${event.eventName}</h4>`)
+      .append(`<h6 class="card-subtitle mb-2 text-muted">Location: ${event.eventLocation}</h6>`)
+      .append(`<h6 class="card-subtitle mb-2 text-muted">Venue: ${event.eventVenue}</h6>`)
+      .append(`<p class="card-text">Date: ${event.eventTime}</p>`)
+      .append(`<p class="card-text">Organizer: admin</p>`);
 
-//       var row = $("<div>");
-//       row.addClass("event");
-
-//       row.append("<p>" + data[i].author + " chirped.. </p>");
-//       row.append("<p>" + data[i].eventLocation + "</p>");
-//       row.append("<p>" + data[i].eventTime + "</p>");
-//       row.append("<p>" + data[i].category + "</p>");
-//       row.append("<p>At " + moment(data[i].created_at).format("h:mma on dddd") + "</p>");
-
-//       $("#recent-events-list").prepend(row);
-
-//     }
-
-//   }
-
-// });
-
-$(document).ready(function() {
-console.log('ready');
-
-$("#logout").on("click", function(a) {
-a.preventDefault()
-console.log("logout");
-  $.get("api/users/logout")
-  window.location.replace("/login");
-});//logout on click
-
-});//document.ready function
+    cardDiv.append(cardBody);
+    $("#recent").append(cardDiv);
+  });
+}

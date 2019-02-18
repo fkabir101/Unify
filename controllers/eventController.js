@@ -83,5 +83,16 @@ module.exports = {
       }).then(function(dbData){
         res.json(dbData);
       })
+    },
+
+    getRecentlyMadeEvents : function(req, res){
+      db.Events.findAll({
+        limit : 5,
+        order : [
+          ['createdAt' , 'DESC']
+        ]
+      }).then(function(dbData){
+        res.json(dbData);
+      })
     }
 }

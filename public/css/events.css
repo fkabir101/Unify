@@ -50,7 +50,6 @@ row{
 
 p {
   
-  width: 0px;
   margin: 0px 0px 0px 0px;
   /* align-content: center; */
 
@@ -59,7 +58,6 @@ p {
   /* top: 50%; */
 
   position: 10px;
-  font-size: 60px;
 }
 .ul1{
   position: 10px;

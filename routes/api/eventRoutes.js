@@ -5,9 +5,12 @@ router.route("/getEvent/:queryType/:queryParam")
 
 router.route("/goEvent/:id")
   .get(eventController.getEventPage)
-  .put(eventController.update)
+  .put(eventController.update);
 router.route("/userEvent")
-  .get(eventController.getEventByUser)
+  .get(eventController.getEventByUser);
 router.route("/userParticipate")
-  .get(eventController.getParticipateByUser)
+  .get(eventController.getParticipateByUser);
+
+router.route("/mainRecent")
+  .get(eventController.getRecentlyMadeEvents);
 module.exports = router;
