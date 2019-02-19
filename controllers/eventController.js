@@ -132,5 +132,14 @@ module.exports = {
           })
         })
       })
+    },
+    eventUpdate : function(req, res){
+      db.Events.update(req.body, {
+        where:{
+          id : req.params.id
+        }
+      }).then(function(updateData){
+        res.json({success:true});
+      })
     }
 }
