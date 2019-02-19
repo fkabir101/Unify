@@ -24,7 +24,6 @@ $("#participating").on("click", function(){
 });
 
 function getUserInfo(){
-  console.log(userObject);
   $("#username").html(userObject.username);
   userInfoDiv = $(`<div>`);
   userInfoDiv
