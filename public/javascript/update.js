@@ -5,7 +5,7 @@ $("#display").on("click", ".update", function (event) {
   $.ajax({
     url: `/api/event/goEvent/${eventId}`,
     method: "GET",
-  }).then(function(data){
+  }).then(function (data) {
     generateUpdateForm(data);
   });
 });
@@ -15,27 +15,49 @@ $("#display").on("click", ".updateEvent", function (event) {
   event.preventDefault();
   eventId = $(this).parent('.eventDisplay').attr('id');
   console.log(eventId);
-  const updateEvent ={
-    eventName : $('#eventName').val().trim(),
-    eventLocation : $('#location').val().trim(),
-    eventVenue : $('#eventVenue').val().trim(),
-    eventDescription : $('#description').val().trim(),
-    eventTime : $('#date').val().trim(),
-    category : $('#category').val().trim(),
+  const updateEvent = {
+    eventName: $('#eventName').val().trim(),
+    eventLocation: $('#location').val().trim(),
+    eventVenue: $('#eventVenue').val().trim(),
+    eventDescription: $('#description').val().trim(),
+    eventTime: $('#date').val().trim(),
+    category: $('#category').val().trim(),
   }
-  console.log(updateEvent);
   $.ajax({
     url: `/api/event/goEvent/${eventId}`,
     method: "POST",
     data: updateEvent
-  }).then(function(data){
-    if(data.success){
-      window.location.reload();
-    }
+  }).then(function (data) {
+    // if(data.success){
+    //   window.location.reload();
+    // }
+    sendEmails(data);
   })
 });
 
-function generateUpdateForm(event){
+function sendEmails(data) {
+  const emailList = {
+    emails : [],
+    event : data.dbData[0].Event.eventName
+  }
+  data.dbData.forEach(element => {
+   emailList.emails.push(element.User.email)
+  });
+  console.log(emailList);
+
+  $.ajax({
+    url: `/api/email/`,
+    method: "POST",
+    data: emailList
+  }).then(function (data) {
+    // if(data.success){
+    //   window.location.reload();
+    // }
+    console.log(data);
+  });
+}
+
+function generateUpdateForm(event) {
   formDiv = $(`<div class = "eventDisplay" id = ${event.id}>`);
   // section to create div for name
   nameGroup = $(`<div class="form-group">`);

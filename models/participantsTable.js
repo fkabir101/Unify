@@ -21,6 +21,12 @@ module.exports = function (sequelize, DataTypes) {
           model: models.Switzerland
         }
     });
+    models.Participants.belongsTo(models.Users,
+      {
+        through: {
+          model: models.Switzerland
+        }
+    });
    }
 
   return Participants;
