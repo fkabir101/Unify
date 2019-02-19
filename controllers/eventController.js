@@ -33,13 +33,13 @@ module.exports = {
       });
     }
   },
-  getEventPage: function(req, res){
+  getEventPage: function (req, res) {
     db.Events.findOne({
       where: {
-        id : req.params.id
+        id: req.params.id
       },
-      include : [db.Users]
-    }).then(function(dbData){
+      include: [db.Users]
+    }).then(function (dbData) {
       res.json(dbData);
     });
   },
@@ -53,93 +53,104 @@ module.exports = {
           id: req.params.id
         }
       })
-      .then(dbData =>   db.Events.findOne({
+      .then(dbData => db.Events.findOne({
         where: {
-          id : req.params.id
+          id: req.params.id
         }
-      }).then(function(dbData){
+      }).then(function (dbData) {
         res.json(dbData);
       }))
       .catch(err => {
         console.log(err);
         res.status(500).json(err);
       });
-    },
-    getEventByUser : function(req, res){
-      db.Events.findAll({
-        where:{
-          UserId: String(req.user.id)
-        }
-      }).then(function(dbData){
-        res.json(dbData);
-      })
-    },
-    getParticipateByUser: function(req,res){
-      db.Participants.findAll({
-        where:{
-          userKey: String(req.user.id)
-        },
-        include : [db.Events]
-      }).then(function(dbData){
-        res.json(dbData);
-      })
-    },
-    getRecentlyMadeEvents : function(req, res){
-      db.Events.findAll({
-        limit : 5,
-        include : [db.Users],
-        order : [
-          ['createdAt' , 'DESC']
-        ]
-      }).then(function(dbData){
-        res.json(dbData);
-      })
-    },
+  },
+  getEventByUser: function (req, res) {
+    db.Events.findAll({
+      where: {
+        UserId: String(req.user.id)
+      }
+    }).then(function (dbData) {
+      res.json(dbData);
+    })
+  },
+  getParticipateByUser: function (req, res) {
+    db.Participants.findAll({
+      where: {
+        userKey: String(req.user.id)
+      },
+      include: [db.Events]
+    }).then(function (dbData) {
+      res.json(dbData);
+    })
+  },
+  getRecentlyMadeEvents: function (req, res) {
+    db.Events.findAll({
+      limit: 5,
+      include: [db.Users],
+      order: [
+        ['createdAt', 'DESC']
+      ]
+    }).then(function (dbData) {
+      res.json(dbData);
+    })
+  },
 
-    //Delete Event from event table
-    deleteEvent: function(req, res){
-      db.Events.destroy({
-        where:{
-          id : req.params.id 
+  //Delete Event from event table
+  deleteEvent: function (req, res) {
+    db.Events.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function (dbData) {
+      res.json({
+        success: true
+      });
+    })
+  },
+  //leave event function and update Prticipants table and subtract one from the events table
+  leaveEvent: function (req, res) {
+    db.Participants.destroy({
+      where: {
+        userKey: String(req.user.id),
+        EventId: req.params.eventId
+      }
+    }).then(function (deleteData) {
+      db.Events.findOne({
+        where: {
+          id: req.params.eventId
         }
-      }).then(function(dbData){
-        res.json({success:true});
-      })
-    },
-    //leave event function and update Prticipants table and subtract one from the events table
-    leaveEvent: function(req, res){
-      db.Participants.destroy({
-        where:{
-          userKey : String(req.user.id),
-          EventId : req.params.eventId
+      }).then(function (dbData) {
+        let newPatricipant = parseInt(dbData.currentParticipants) - 1
+        update = {
+          currentParticipants: newPatricipant
         }
-      }).then(function(deleteData){
-        db.Events.findOne({
-          where:{
-            id : req.params.eventId
+        db.Events.update(update, {
+          where: {
+            id: req.params.eventId
           }
-        }).then(function(dbData){
-          let newPatricipant = parseInt(dbData.currentParticipants) - 1
-          update ={
-            currentParticipants : newPatricipant
-          } 
-          db.Events.update(update, {
-            where:{
-              id : req.params.eventId
-            }
-          }).then(function(updateData){
-            res.json({success:true});
-          })
+        }).then(function (updateData) {
+          res.json({
+            success: true
+          });
         })
       })
-    },
-    eventUpdate : function(req, res){
-      db.Events.update(req.body, {
-        where:{
-          id : req.params.id
-        }
-      }).then(function(updateData){
-        res.json({success:true});
+    })
+  },
+  eventUpdate: function (req, res) {
+    db.Events.update(req.body, {
+      where: {
+        id: req.params.id
+      }
+    }).then(function (updateData) {
+      db.Participants.findAll({
+        where: {
+          EventId: req.params.id
+        },
+        include: [db.Events, db.Users]
+      }).then(function (dbData) {
+        res.json({dbData});
       })
-    }
+    })
+  }
 }
