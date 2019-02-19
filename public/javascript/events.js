@@ -82,7 +82,7 @@ $("#search").on("click", function (event) {
 function generateEvents(dbData) {
   const allEvents = $("<div>");
   dbData.forEach(function (event) {
-    const eventDiv = $(`<div class="p-3 border border-dark event" id="${event.id}">`);
+    const eventDiv = $(`<div class="p-3 border border-dark event bg-light" id="${event.id}">`);
 
     const nameDiv = $(`<div class = 'm-3 row'>`);
     nameDiv.append(`<h3>${event.eventName}: ${event.eventTime}</h3>`);
@@ -112,7 +112,7 @@ $("#eventList").on("click", ".event", function () {
 
 function getEventPage(event) {
  // console.log(event);
-  const eventDiv = $(`<div class="p-3 border border-dark event" id="${event.id}">`);
+  const eventDiv = $(`<div class="p-3 border border-dark event bg-light" id="${event.id}">`);
   eventDiv
     .append(`<h1>${event.eventName}</h1>`)
     .append(`<h3>Venue: ${event.eventVenue}, ${event.eventLocation}</h3>`)

@@ -45,7 +45,7 @@ function getEvent(){
 function generateEvents(dbData){
   const allEvents = $("<div>");
   dbData.forEach(function(event){
-    const eventDiv = $(`<div class="p-3 border border-dark event" id="${event.id}">`);
+    const eventDiv = $(`<div class="p-3 border border-dark event bg-light" id="${event.id}">`);
 
     const nameDiv = $(`<div class = 'm-3 row'>`);
     nameDiv.append(`<h3>${event.eventName}: ${event.eventTime}</h3>`);
@@ -79,7 +79,7 @@ function generateParticipating(dbData){
   console.log(dbData);
   const allEvents = $("<div>");
   dbData.forEach(function(event){
-    const eventDiv = $(`<div class="p-3 border border-dark event" id="${event.Event.id}">`);
+    const eventDiv = $(`<div class="p-3 border border-dark bg-light event" id="${event.Event.id}">`);
 
     const nameDiv = $(`<div class = 'm-3 row'>`);
     nameDiv.append(`<h3>${event.Event.eventName}: ${event.Event.eventTime}</h3>`);
@@ -102,10 +102,10 @@ $("#display").on("click", ".leave", function (event) {
   event.preventDefault();
   eventId = $(this).parent('.event').attr('id');
   $.ajax({
-    url: `/api/event/goEvent/${eventId}`,
+    url: `/api/event/leaveEvent/${eventId}`,
     method: "DELETE",
   }).then(function(data){
-    console.log(data);
+    window.location.reload();
   });
 });
 // delete event
@@ -116,7 +116,7 @@ $("#display").on("click", ".delete", function (event) {
     url: `/api/event/goEvent/${eventId}`,
     method: "DELETE",
   }).then(function(data){
-    console.log(data);
+    window.location.reload();
   });
 });
 
